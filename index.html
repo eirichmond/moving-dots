@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+
+</head>
+
+<body>
+	<div class="container">
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+		<span class="circle item1"></span>
+		<span class="circlesmall item2"></span>
+		<span class="circle item3"></span>
+		<span class="circlesmall item4"></span>
+		<span class="circle item5"></span>
+		<span class="circlesmall item1"></span>
+		<span class="circle item2"></span>
+		<span class="circlesmall item3"></span>
+		<span class="circle item4"></span>
+		<span class="circlesmall item5"></span>
+	</div>
+
+</body>
+
+<style>
+	
+	body {
+		position: relative;
+		background: #15156d;
+		
+	}
+	.container {
+		padding: 200px;
+	}
+	.circle {
+	    height: 25px;
+	    width: 25px;
+	    background-color: #393992;
+	    border-radius: 50%;
+	    display: inline-block;
+	    position: absolute;
+	    left: 300px;
+	    top: 300px;
+	    transition: all 1.5s ease-in-out;
+	    transform-origin:left;
+	}
+	.circlesmall {
+	    height: 15px;
+	    width: 15px;
+	    background-color: #393992;
+	    border-radius: 50%;
+	    display: inline-block;
+	    position: absolute;
+	    left: 300px;
+	    top: 300px;
+	    transition: all 1s ease-in-out;
+	    transform-origin: right;
+	}
+	
+</style>
+
+<script>
+	
+	/*
+		takes an nodelist then randomly positions them in the window
+		@param  object/nodelist  elements
+	*/
+	function loopobjects(elements) {
+		elements.forEach(function(element) {
+			const height = window.innerHeight - 100;
+			const width = window.innerWidth - 100;
+			const x = Math.ceil((Math.random() * height) + 1);
+			const y = Math.ceil((Math.random() * width) + 1);
+			element.style.left = y+'px';
+			element.style.top = x+'px';
+		});
+		
+	}
+
+	/*
+		a callback function for later setInterval() 
+	*/
+	function randomstandard() {
+		const circles = document.querySelectorAll('.circle');
+		loopobjects(circles);
+	}
+
+	/*
+		a callback function for later setInterval() 
+	*/
+	function randomsmaller() {
+		const smallcircles = document.querySelectorAll('.circlesmall');
+		loopobjects(smallcircles);
+	}
+
+	/*
+		fire the interval 
+	*/
+	setInterval(randomstandard, 1200);
+	setInterval(randomsmaller, 1000);
+	
+</script>
+
+</html>
