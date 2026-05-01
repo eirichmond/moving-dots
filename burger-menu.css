@@ -1,0 +1,67 @@
+/* ─── Animated Burger Menu Icon for WordPress Block Themes ──────────────────
+   Drop this into your child theme's style.css or enqueue as a separate file.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Hide the default WordPress SVG icons on both open and close buttons */
+.wp-block-navigation__responsive-container-open svg,
+.wp-block-navigation__responsive-container-close svg {
+    display: none;
+}
+
+/* Button sizing and reset */
+.wp-block-navigation__responsive-container-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Icon wrapper — sets the bounding box for the three lines */
+.burger-icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 18px;
+    pointer-events: none;
+}
+
+/* Each of the three lines */
+.burger-icon span {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transform-origin: center center;
+    transition:
+        transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity   0.25s ease;
+}
+
+.burger-icon span:nth-child(1) { top: 0;    }
+.burger-icon span:nth-child(2) { top: 8px;  }
+.burger-icon span:nth-child(3) { top: 16px; }
+
+/* ── Open state: three lines → X ──────────────────────────────────────────
+   Top line slides to centre and rotates +45°.
+   Middle line fades out.
+   Bottom line slides to centre and rotates -45°.
+   ───────────────────────────────────────────────────────────────────────── */
+.wp-block-navigation__responsive-container-open.is-active .burger-icon span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.wp-block-navigation__responsive-container-open.is-active .burger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.wp-block-navigation__responsive-container-open.is-active .burger-icon span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
