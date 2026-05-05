@@ -28,6 +28,17 @@
             icon.innerHTML = '<span></span><span></span><span></span>';
             openBtn.appendChild(icon);
 
+            // When the menu is already open, intercept the open-button click in
+            // the capture phase (before WordPress's own handler) and delegate to
+            // the close button instead. stopImmediatePropagation prevents
+            // WordPress from treating it as a second "open" action.
+            openBtn.addEventListener('click', function (e) {
+                if (!container.classList.contains('is-menu-open')) return;
+                e.stopImmediatePropagation();
+                var closeBtn = container.querySelector('.wp-block-navigation__responsive-container-close');
+                if (closeBtn) closeBtn.click();
+            }, true /* capture */);
+
             // Mirror WordPress's is-menu-open state onto the button so CSS
             // can drive the burger → X transition without any JS animation.
             new MutationObserver(function () {
